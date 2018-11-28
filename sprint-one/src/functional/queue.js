@@ -12,6 +12,7 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
+    delete storage[Object.keys(storage)[0]];
   };
 
   someInstance.size = function() {
