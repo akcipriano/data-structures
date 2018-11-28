@@ -12,7 +12,9 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
+    var firstItem = storage[Object.keys(storage)[0]];
     delete storage[Object.keys(storage)[0]];
+    return firstItem;
   };
 
   someInstance.size = function() {
