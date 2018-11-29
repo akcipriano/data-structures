@@ -23,3 +23,9 @@ queueMethods.enqueue = function(value) {
   numKey++;
   this.storage[numKey] = value;
 };
+
+queueMethods.dequeue = function() {
+  var firstItem = this.storage[(Object.keys(this.storage)[0])];
+  delete this.storage[(Object.keys(this.storage)[0])];
+  return firstItem;
+};
