@@ -3,7 +3,7 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = [];  // fix me
+  newTree.children = [];// fix me
   _.extend(newTree, treeMethods);
   return newTree;
 };
@@ -15,32 +15,33 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  // var holder = false;
-  // if (this.children.length) {
-  //   for (var i = 0; i < this.children.length; i++) {
-  //     if (_.pluck(this.children[i], 'value').includes(target)) {
-  //       holder = true;
-  //     }
 
-  //     // this.children[i].contains(target);
-  //   }
-  // }
-  // if (_.pluck(this.children, 'value').includes(target)){
-  //   return _.pluck(this.children, 'value').includes(target);
-  // }
-
-  if (this.children.length > 1) {
-    for (var i = 0; i < this.children.length; i++) {
-      var temp =  this.children[i].contains(target);
-    }
-    return temp;
-  }
-  return _.pluck(this.children, 'value').includes(target);
+  return checkIfTrue(this.children, target);
 
 };
 
+var  checkIfTrue = function(child, target) {
+  var temp = false;
 
+  if (_.pluck(child, 'value').includes(target)) {
+    return true;
+  }
+
+  if (child.length > 0){
+    for (var i = 0; i < child.length; i++){
+      if (checkIfTrue(child[i].children, target)){
+        return true;
+      }
+    }
+  }
+
+  return temp;
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
+   treeMethods.addChild: O(1)
+   treeMethods.contains: O(n)
+   Tree(): O(1);
+
  */
