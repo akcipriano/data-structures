@@ -24,4 +24,12 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should remove specified value', function() {
+    set.add('George Clooney');
+    set.add('Mel Gibson');
+    set.remove('Mel Gibson');
+    expect(set.contains('Mel Gibson')).to.equal(false);
+    expect(set.contains('George Clooney')).to.equal(true);
+  });
+
 });

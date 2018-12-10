@@ -52,4 +52,9 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should link subsequent values', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.head.next.value).to.equal(5);
+  });
 });
