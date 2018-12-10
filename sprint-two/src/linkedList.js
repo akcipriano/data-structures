@@ -21,7 +21,9 @@ var LinkedList = function() {
     if (list.storage.length > 1) {
       list.head.next = list.storage[1];
     }
-
+    if (list.storage.length > 1){
+      list.storage[list.storage.length-2].next = list.storage[list.storage.length-1];
+    }
     return temp.value;
   };
 
