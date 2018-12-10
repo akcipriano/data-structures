@@ -9,7 +9,9 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function(value) {
-  this.storage.push(value);
+  if(!this.storage.includes(value)){
+    this.storage.push(value);
+  }
   var currentNode = this;
   while (currentNode) {
     if (currentNode.value > value) {
@@ -26,6 +28,8 @@ BinarySearchTree.prototype.insert = function(value) {
         currentNode.right = BinarySearchTree(value);
         currentNode = null;
       }
+    } else {
+      currentNode = null;
     }
   }
 };
